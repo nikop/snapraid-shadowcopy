@@ -11,6 +11,24 @@ function writeLog($txt)
 }
 # /Logging
 
+function Get-FileLock($name)
+{
+    if (-Not(Test-Path $name))
+    {
+        Set-Content $name ""
+    }
+	$file = 0
+	
+	try {
+		$file = [System.IO.File]::Open($name, 'Open', 'ReadWrite', 'None')
+	}
+	catch {
+		$file = 0
+	}
+	
+	return $file
+}
+
 $config = Get-IniContent('.\settings.ini')
 
 # EXE of SnapRaid
@@ -22,6 +40,8 @@ $config_base = $config["SnapRaid"]["config"]
 $config_shadow = $config["SnapRaid"]["config_shadow"]
 
 $min_age = $config["ShadowCopy"]["min_age"]
+# Lock File
+$lock_file = $config["SnapRaid"]["lock_file"]
 
 # Current Time (for consistency)
 $now = Get-Date

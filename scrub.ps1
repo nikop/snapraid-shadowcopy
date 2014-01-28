@@ -2,23 +2,16 @@
 
 $lock = Get-FileLock($lock_file)
 
-Write-Host $lock_file
-
 if (-Not($lock))
 {
 	writeLog("Unable to lock!")
 	exit 1
 }
 
-writeLog("Updating Shadow Copies")
+writeLog("`nRunning scrub")
 writeLog("------------------------`n")
 
-Update-ShadowConfig
-
-writeLog("`nRunning sync")
-writeLog("------------------------`n")
-
-$log = Run-SnapRaidShadow "sync"
+$log = Run-SnapRaidShadow "scrub"
 writeLog $log
 
 writeLog("`nStatus")
@@ -27,6 +20,6 @@ writeLog("------------------------`n")
 $log = Run-SnapRaidShadow "status"
 writeLog $log
 
-Email-Log "Sync"
+Email-Log "Scrub"
 
 $lock.close()
