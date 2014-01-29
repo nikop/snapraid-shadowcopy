@@ -5,7 +5,8 @@ $lock = Get-FileLock($lock_file)
 if (-Not($lock))
 {
 	writeLog("Unable to lock!")
-	exit 1
+	Email-Log "FAILED! Scrub"
+	exit 10
 }
 
 writeLog("`nRunning scrub")
