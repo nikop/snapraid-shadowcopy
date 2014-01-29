@@ -20,10 +20,10 @@ if (-Not($lock))
 }
 
 # Ensure there is shadowed config
-#if ( -Not( Test-Path $config_shadow ) )
-#{
+if ( -Not( Test-Path $config_shadow ) )
+{
     Update-ShadowConfig
-#}
+}
 
 DoActionProcessing
 
