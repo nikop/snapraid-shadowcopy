@@ -4,6 +4,12 @@ function DoActionProcessing()
 	writeLog("------------------------`n")
 
 	Update-ShadowConfig
+	
+	writeLog("`nRunning Diff")
+	writeLog("------------------------`n")
+
+	$log = Run-SnapRaidShadow "diff"
+	writeLog $log	
 
 	writeLog("`nRunning sync")
 	writeLog("------------------------`n")
