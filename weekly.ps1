@@ -14,7 +14,7 @@ function DoActionProcessing()
 	writeLog("`nRunning scrub")
 	writeLog("------------------------`n")
 
-	$log = Run-SnapRaidShadow scrub -o 14 -p 50
+	$log = Run-SnapRaidShadow scrub -o 1
 	writeLog $log
 
 	writeLog("`nStatus")
