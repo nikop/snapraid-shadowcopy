@@ -14,7 +14,7 @@ function DoActionProcessing()
 	writeLog("`nRunning scrub")
 	writeLog("------------------------`n")
 
-	$log = Run-SnapRaidShadow @("scrub", "-p", "25")
+	$log = Run-SnapRaidShadow @("scrub", "-p", "100", "-o", "0")
 	writeLog $log
 
 	writeLog("`nStatus")
@@ -23,7 +23,7 @@ function DoActionProcessing()
 	$log = Run-SnapRaidShadow "status"
 	writeLog $log
 
-	Email-Log "Sync & Scrub (new)"
+	Email-Log "Sync and Scrub"
 }
 
 . '.\snapraid-shadowcopy\action.ps1'
