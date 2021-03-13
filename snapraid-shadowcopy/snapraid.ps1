@@ -3,7 +3,7 @@ function Run-SnapRaid($cmd)
 {
 	writeLog($cmd)
 
-    $out = & $snapRaidExe $cmd -c "$config_base" -l "log.log" 2>&1 | out-string
+    $out = & $snapRaidExe $cmd -c "$config_base" -l "logs/$(get-date -f yyyy-MM-dd-HHmmss).log" 2>&1 | out-string
 
     return $out
 }
@@ -12,7 +12,7 @@ function Run-SnapRaid($cmd)
 function Run-SnapRaidShadow($cmd)
 {
 	writeLog($cmd)
-    $out = & $snapRaidExe $cmd -c "$config_shadow" -l "log.log" 2>&1 | out-string
+    $out = & $snapRaidExe $cmd -c "$config_shadow" -l "logs/$(get-date -f yyyy-MM-dd-HHmmss).log" 2>&1 | out-string
 
     return $out
 }
